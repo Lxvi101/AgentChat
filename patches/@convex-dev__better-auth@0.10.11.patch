@@ -1,0 +1,15 @@
+diff --git a/dist/component/schema.js b/dist/component/schema.js
+index 1234567..abcdefg 100644
+--- a/dist/component/schema.js
++++ b/dist/component/schema.js
+@@ -17,6 +17,10 @@ export const tables = {
+         phoneNumber: v.optional(v.union(v.null(), v.string())),
+         phoneNumberVerified: v.optional(v.union(v.null(), v.boolean())),
+         userId: v.optional(v.union(v.null(), v.string())),
++        role: v.optional(v.union(v.null(), v.string())),
++        banned: v.optional(v.union(v.null(), v.boolean())),
++        banReason: v.optional(v.union(v.null(), v.string())),
++        banExpires: v.optional(v.union(v.null(), v.number())),
+     })
+         .index("email_name", ["email", "name"])
+         .index("name", ["name"])

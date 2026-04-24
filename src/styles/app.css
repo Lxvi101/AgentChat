@@ -1,0 +1,925 @@
+@import "tailwindcss" source("../../");
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+@plugin '@tailwindcss/typography';
+
+@theme inline {
+    /* Standard Tailwind mapping to CSS variables */
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+
+    --color-sidebar: var(--sidebar-background);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-ring: var(--sidebar-ring);
+
+    /* T3 Specific Custom Colors */
+    --color-chat-border: var(--chat-border);
+    --color-chat-background: var(--chat-background);
+    --color-chat-accent: var(--chat-accent);
+    --color-chat-overlay: var(--chat-overlay);
+    --color-chat-input-gradient: var(--chat-input-gradient);
+    --color-chat-input-background: var(--chat-input-background);
+    --color-wordmark: var(--wordmark-color);
+    --color-heading: var(--color-heading);
+    --color-gradient-noise-top: var(--gradient-noise-top);
+    --color-studio-accent: var(--studio-accent);
+    --color-studio-accent-foreground: var(--studio-accent-foreground);
+
+    --font-sans: "Inter", "Proxima Vara", ui-sans-serif, system-ui, sans-serif;
+    --font-mono:
+        "JetBrains Mono", "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo,
+        Monaco, Consolas, monospace;
+
+    --ease-snappy: cubic-bezier(0.2, 0, 0, 1);
+
+    --radius-sm: calc(var(--radius) - 4px);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) + 4px);
+    --radius-2xl: calc(var(--radius) + 8px);
+    --radius-3xl: calc(var(--radius) + 12px);
+    --radius-4xl: calc(var(--radius) + 16px);
+
+    /* Smooth Custom Animations */
+    --animate-pop-in: pop-in 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    --animate-pop-out: pop-out 0.2s ease-out;
+    --animate-suck-in: suck-in 0.4s cubic-bezier(0.32, 0, 0.67, 0);
+    --animate-checkmark-pop: checkmark-pop 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    --animate-glow-pulse: glow-pulse 1.5s ease-in-out infinite;
+    --animate-context-ready: context-ready 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+
+    @keyframes pop-in {
+        0% { opacity: 0; filter: blur(6px); scale: 0.95; }
+        100% { opacity: 1; filter: blur(0px); scale: 1; }
+    }
+    @keyframes pop-out {
+        0% { opacity: 1; filter: blur(0px); scale: 1; }
+        100% { opacity: 0; filter: blur(6px); scale: 0.95; }
+    }
+    @keyframes suck-in {
+        0% { opacity: 1; scale: 1; }
+        60% { opacity: 0.7; scale: 0.6; }
+        100% { opacity: 0; scale: 0.15; }
+    }
+    @keyframes checkmark-pop {
+        0% { scale: 0; opacity: 0; }
+        50% { scale: 1.25; opacity: 1; }
+        100% { scale: 1; opacity: 1; }
+    }
+    @keyframes glow-pulse {
+        0%, 100% { box-shadow: 0 0 8px 2px var(--primary); }
+        50% { box-shadow: 0 0 16px 4px var(--primary); }
+    }
+    @keyframes context-ready {
+        0% { scale: 0.8; opacity: 0; }
+        40% { scale: 1.15; opacity: 1; }
+        70% { scale: 0.95; }
+        100% { scale: 1; opacity: 1; }
+    }
+    @keyframes progress-ring {
+        0% { stroke-dashoffset: 100; }
+        100% { stroke-dashoffset: 0; }
+    }
+}
+
+@layer base {
+    :root {
+        /* Image Studio accent (rose) */
+        --studio-accent: #be185d;
+        --studio-accent-foreground: #ffffff;
+
+        /* Neutral/Zinc Light Mode */
+        --background: #ffffff;
+        --foreground: #09090b;
+        --card: #ffffff;
+        --card-foreground: #09090b;
+        --popover: #ffffff;
+        --popover-foreground: #09090b;
+        --primary: #18181b;
+        --primary-foreground: #fafafa;
+        --secondary: #f4f4f5;
+        --secondary-foreground: #18181b;
+        --muted: #f4f4f5;
+        --muted-foreground: #71717a;
+        --accent: #f4f4f5;
+        --accent-foreground: #18181b;
+        --destructive: #ef4444;
+        --destructive-foreground: #fafafa;
+        --border: #e4e4e7;
+        --input: #e4e4e7;
+        --ring: #18181b;
+
+        --sidebar-background: #fafafa;
+        --sidebar-foreground: #18181b;
+        --sidebar-primary: #18181b;
+        --sidebar-primary-foreground: #fafafa;
+        --sidebar-accent: #f4f4f5;
+        --sidebar-accent-foreground: #18181b;
+        --sidebar-border: #e4e4e7;
+        --sidebar-ring: #18181b;
+
+        --gradient-noise-top: #ffffff;
+        --color-heading: #09090b;
+        --chat-border: #e4e4e7;
+        --chat-background: #fafafa;
+        --chat-accent: #f4f4f5;
+        --chat-overlay: rgba(255,255,255,0.72);
+        --chat-input-gradient: #e4e4e7;
+        --chat-input-background: rgba(255,255,255,0.8);
+        --wordmark-color: #09090b;
+
+        --radius: 0.5rem;
+    }
+
+    .dark {
+        /* Image Studio accent (rose – brighter for dark mode) */
+        --studio-accent: #f472b6;
+        --studio-accent-foreground: #18181b;
+
+        /* Neutral/Zinc Dark Mode */
+        --background: #09090b;
+        --foreground: #fafafa;
+        --card: #09090b;
+        --card-foreground: #fafafa;
+        --popover: #09090b;
+        --popover-foreground: #fafafa;
+        --primary: #fafafa;
+        --primary-foreground: #18181b;
+        --secondary: #27272a;
+        --secondary-foreground: #fafafa;
+        --muted: #27272a;
+        --muted-foreground: #a1a1aa;
+        --accent: #27272a;
+        --accent-foreground: #fafafa;
+        --destructive: #7f1d1d;
+        --destructive-foreground: #fafafa;
+        --border: #27272a;
+        --input: #27272a;
+        --ring: #d4d4d8;
+
+        --sidebar-background: #09090b;
+        --sidebar-foreground: #fafafa;
+        --sidebar-primary: #fafafa;
+        --sidebar-primary-foreground: #18181b;
+        --sidebar-accent: #27272a;
+        --sidebar-accent-foreground: #fafafa;
+        --sidebar-border: #27272a;
+        --sidebar-ring: #d4d4d8;
+
+        --gradient-noise-top: #09090b;
+        --color-heading: #fafafa;
+        --chat-border: #27272a;
+        --chat-background: #09090b;
+        --chat-accent: rgba(39,39,42,0.8);
+        --chat-overlay: rgba(9,9,11,0.71);
+        --chat-input-gradient: #27272a;
+        --chat-input-background: rgba(39,39,42,0.4);
+        --wordmark-color: #fafafa;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+
+    html {
+        overscroll-behavior: none;
+        overflow: hidden;
+        height: 100%;
+        /* Force the root background to match your chat UI */
+        background-color: var(--chat-background) !important;
+    }
+
+    body {
+        @apply text-foreground antialiased selection:bg-primary selection:text-primary-foreground font-sans;
+        background-color: var(--chat-background) !important;
+        overscroll-behavior: none;
+        overflow: hidden;
+        height: 100%;
+        /* iOS: prevent bounce/rubber-band scroll */
+        position: fixed;
+        width: 100%;
+        inset: 0;
+    }
+
+    /* Stabilize textarea to prevent height-jump flash on refresh */
+    textarea {
+        line-height: 1.5rem !important; /* Matches leading-6 */
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+
+}
+
+/* Smart scroll: prevents layout thrashing when streaming text */
+.chat-scroll-container {
+    overflow-anchor: auto;
+}
+
+/* Adjust the chat container padding to account for the new floating input height */
+.chat-scroll-container > div {
+    padding-bottom: 180px !important;
+}
+
+.scroll-anchor-element {
+    height: 1px;
+    overflow-anchor: auto;
+}
+
+/* Isolate each message's layout so streaming text growth
+   doesn't trigger full-page reflows */
+.chat-scroll-container [class*="break-after-avoid"] {
+    contain: inline-size style;
+}
+
+@layer utilities {
+    .bg-noise {
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        background-repeat: repeat;
+    }
+
+    .border-reflect {
+        position: relative;
+    }
+
+    .border-reflect::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        padding: 1px;
+        background: linear-gradient(
+            to bottom,
+            var(--chat-input-gradient),
+            rgba(255, 255, 255, 0.1) /* Light touch on bottom border */
+        );
+        mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+        mask-composite: exclude;
+        pointer-events: none;
+    }
+
+    .button-reflect {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .button-reflect::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        padding: 1px;
+        background: linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.3),
+            transparent
+        );
+        mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+        mask-composite: exclude;
+        pointer-events: none;
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    /* Global drop zone glassmorphism overlay */
+    .drop-zone-overlay {
+        backdrop-filter: blur(8px) saturate(1.4);
+        -webkit-backdrop-filter: blur(8px) saturate(1.4);
+        background: var(--chat-overlay);
+    }
+
+    /* Drop target glow effect when file hovers over it */
+    .drop-target-active {
+        scale: 1.02;
+        border-color: var(--primary) !important;
+        box-shadow: 0 0 12px 3px color-mix(in srgb, var(--primary) 40%, transparent),
+                    0 0 24px 6px color-mix(in srgb, var(--primary) 15%, transparent);
+        transition: scale 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+                    border-color 0.15s ease,
+                    box-shadow 0.25s ease;
+    }
+
+    /* Circular progress indicator */
+    .progress-ring-circle {
+        transition: stroke-dashoffset 0.35s ease;
+        transform: rotate(-90deg);
+        transform-origin: 50% 50%;
+    }
+
+    /* ───── Neomorphic Agent System ───── */
+
+    /* Dynamic Island pill – elevated glass with shimmer border */
+    .agent-pill {
+        background: linear-gradient(
+            135deg,
+            color-mix(in srgb, var(--primary) 10%, var(--card)),
+            color-mix(in srgb, var(--primary) 5%, var(--card))
+        );
+        backdrop-filter: blur(20px) saturate(1.5);
+        -webkit-backdrop-filter: blur(20px) saturate(1.5);
+        box-shadow:
+            0 1px 2px rgba(0, 0, 0, 0.06),
+            0 4px 16px rgba(0, 0, 0, 0.06),
+            0 8px 32px rgba(0, 0, 0, 0.04),
+            inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        border: 1px solid color-mix(in srgb, var(--primary) 15%, var(--border));
+        transition: box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .agent-pill:hover {
+        box-shadow:
+            0 1px 2px rgba(0, 0, 0, 0.08),
+            0 4px 16px rgba(0, 0, 0, 0.08),
+            0 12px 40px rgba(0, 0, 0, 0.06),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        border-color: color-mix(in srgb, var(--primary) 25%, var(--border));
+    }
+
+    .agent-pill-exit:hover {
+        background-color: color-mix(in srgb, var(--destructive) 15%, transparent);
+    }
+
+    /* Neomorphic agent dialog styling */
+    .agent-dialog {
+        background: linear-gradient(
+            165deg,
+            color-mix(in srgb, var(--primary) 3%, var(--background)),
+            var(--background) 40%,
+            color-mix(in srgb, var(--primary) 2%, var(--background))
+        ) !important;
+        box-shadow:
+            0 25px 60px rgba(0, 0, 0, 0.15),
+            0 10px 20px rgba(0, 0, 0, 0.08),
+            inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
+        border: 1px solid color-mix(in srgb, var(--primary) 10%, var(--border)) !important;
+        overflow: hidden;
+    }
+
+    /* Agent dialog header glow orb */
+    .agent-dialog-glow {
+        position: absolute;
+        top: -40px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 200px;
+        height: 120px;
+        background: radial-gradient(
+            ellipse at center,
+            color-mix(in srgb, var(--primary) 12%, transparent),
+            transparent 70%
+        );
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    /* Neomorphic icon container */
+    .agent-icon-neo {
+        background: linear-gradient(
+            145deg,
+            color-mix(in srgb, var(--primary) 12%, var(--muted)),
+            color-mix(in srgb, var(--primary) 6%, var(--muted))
+        );
+        box-shadow:
+            4px 4px 12px color-mix(in srgb, var(--primary) 6%, rgba(0, 0, 0, 0.08)),
+            -2px -2px 8px rgba(255, 255, 255, 0.04),
+            inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    }
+
+    /* Neomorphic input fields */
+    .neo-input {
+        background: color-mix(in srgb, var(--muted) 40%, var(--background)) !important;
+        box-shadow:
+            inset 2px 2px 6px color-mix(in srgb, var(--primary) 4%, rgba(0, 0, 0, 0.06)),
+            inset -1px -1px 4px rgba(255, 255, 255, 0.02),
+            0 1px 2px rgba(255, 255, 255, 0.02);
+        border: 1px solid color-mix(in srgb, var(--primary) 8%, var(--border)) !important;
+        transition: box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .neo-input:focus,
+    .neo-input:focus-within {
+        box-shadow:
+            inset 2px 2px 6px color-mix(in srgb, var(--primary) 6%, rgba(0, 0, 0, 0.08)),
+            inset -1px -1px 4px rgba(255, 255, 255, 0.03),
+            0 0 0 2px color-mix(in srgb, var(--primary) 15%, transparent);
+        border-color: color-mix(in srgb, var(--primary) 20%, var(--border)) !important;
+    }
+
+    /* Glass file chips */
+    .agent-file-chip {
+        background: linear-gradient(
+            135deg,
+            color-mix(in srgb, var(--primary) 8%, var(--muted)),
+            color-mix(in srgb, var(--primary) 4%, var(--muted))
+        );
+        backdrop-filter: blur(8px);
+        border: 1px solid color-mix(in srgb, var(--primary) 12%, var(--border));
+        box-shadow:
+            0 1px 4px rgba(0, 0, 0, 0.04),
+            0 2px 8px rgba(0, 0, 0, 0.02),
+            inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .agent-file-chip:hover {
+        border-color: color-mix(in srgb, var(--primary) 25%, var(--border));
+        box-shadow:
+            0 2px 8px rgba(0, 0, 0, 0.06),
+            0 4px 16px rgba(0, 0, 0, 0.04),
+            inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        transform: translateY(-1px);
+    }
+
+    /* Neomorphic upload drop zone */
+    .neo-upload-zone {
+        background: color-mix(in srgb, var(--primary) 3%, var(--muted));
+        border: 2px dashed color-mix(in srgb, var(--primary) 15%, var(--border));
+        box-shadow:
+            inset 2px 2px 8px color-mix(in srgb, var(--primary) 3%, rgba(0, 0, 0, 0.04)),
+            inset -1px -1px 4px rgba(255, 255, 255, 0.02);
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .neo-upload-zone:hover {
+        background: color-mix(in srgb, var(--primary) 6%, var(--muted));
+        border-color: color-mix(in srgb, var(--primary) 30%, var(--border));
+        box-shadow:
+            inset 2px 2px 8px color-mix(in srgb, var(--primary) 5%, rgba(0, 0, 0, 0.06)),
+            inset -1px -1px 4px rgba(255, 255, 255, 0.03),
+            0 0 16px color-mix(in srgb, var(--primary) 8%, transparent);
+    }
+
+    /* Vibrant agent badge for chat input */
+    .agent-input-badge {
+        background: linear-gradient(
+            135deg,
+            color-mix(in srgb, var(--primary) 10%, var(--card)),
+            color-mix(in srgb, var(--primary) 5%, var(--card))
+        );
+        border: 1px solid color-mix(in srgb, var(--primary) 18%, var(--border));
+        box-shadow:
+            0 1px 4px color-mix(in srgb, var(--primary) 10%, rgba(0, 0, 0, 0.06)),
+            0 2px 8px color-mix(in srgb, var(--primary) 5%, rgba(0, 0, 0, 0.04)),
+            inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .agent-input-badge::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            90deg,
+            transparent 0%,
+            color-mix(in srgb, var(--primary) 8%, transparent) 50%,
+            transparent 100%
+        );
+        animation: agent-badge-shimmer 3s ease-in-out infinite;
+        pointer-events: none;
+    }
+
+    /* Agent empty-state orb */
+    .agent-empty-pill {
+        background: linear-gradient(
+            135deg,
+            color-mix(in srgb, var(--primary) 8%, var(--card)),
+            color-mix(in srgb, var(--primary) 4%, var(--card))
+        );
+        border: 1px solid color-mix(in srgb, var(--primary) 12%, var(--border));
+        box-shadow:
+            0 2px 12px color-mix(in srgb, var(--primary) 8%, rgba(0, 0, 0, 0.08)),
+            0 8px 32px color-mix(in srgb, var(--primary) 4%, rgba(0, 0, 0, 0.04)),
+            inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    }
+
+    /* Sidebar agent row glow on hover */
+    .agent-sidebar-row {
+        position: relative;
+        transition: background-color 0.2s ease;
+    }
+
+    .agent-sidebar-row::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background: radial-gradient(
+            ellipse at 20% 50%,
+            color-mix(in srgb, var(--primary) 6%, transparent),
+            transparent 70%
+        );
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+    }
+
+    .agent-sidebar-row:hover::before {
+        opacity: 1;
+    }
+
+    /* Agent expand left-accent bar */
+    .agent-expand-bar {
+        border-image: linear-gradient(
+            to bottom,
+            color-mix(in srgb, var(--primary) 25%, var(--border)),
+            color-mix(in srgb, var(--primary) 8%, var(--border))
+        ) 1;
+    }
+
+    /* Neomorphic action button */
+    .neo-button-primary {
+        background: linear-gradient(
+            145deg,
+            color-mix(in srgb, var(--primary) 100%, transparent),
+            color-mix(in srgb, var(--primary) 85%, transparent)
+        );
+        box-shadow:
+            0 2px 8px color-mix(in srgb, var(--primary) 25%, rgba(0, 0, 0, 0.2)),
+            0 4px 16px color-mix(in srgb, var(--primary) 15%, rgba(0, 0, 0, 0.1)),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .neo-button-primary:hover {
+        box-shadow:
+            0 4px 12px color-mix(in srgb, var(--primary) 30%, rgba(0, 0, 0, 0.25)),
+            0 8px 24px color-mix(in srgb, var(--primary) 20%, rgba(0, 0, 0, 0.15)),
+            inset 0 1px 0 rgba(255, 255, 255, 0.12);
+        transform: translateY(-1px);
+    }
+
+    .neo-button-primary:active {
+        transform: translateY(0px);
+        box-shadow:
+            0 1px 4px color-mix(in srgb, var(--primary) 20%, rgba(0, 0, 0, 0.15)),
+            inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       Duolingo-inspired minimal agent creator
+       Chunky borders, 3D press buttons, zero gradients, one accent.
+       ═══════════════════════════════════════════════════════════ */
+
+    /* Dialog shell, flat, thick border, gentle drop shadow */
+    .duo-dialog {
+        background: var(--background) !important;
+        border: 2px solid var(--border) !important;
+        border-radius: 24px !important;
+        box-shadow:
+            0 12px 40px rgba(0, 0, 0, 0.10),
+            0 2px 6px rgba(0, 0, 0, 0.04) !important;
+    }
+
+    /* Thin segmented progress bar at the top of the wizard */
+    .duo-progress-track {
+        background: var(--muted);
+        border-radius: 999px;
+        height: 10px;
+        overflow: hidden;
+        border: 2px solid var(--border);
+    }
+
+    .duo-progress-fill {
+        height: 100%;
+        background: var(--primary);
+        border-radius: inherit;
+        box-shadow: inset 0 -3px 0 0 color-mix(in srgb, black 18%, transparent);
+        transition: width 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Emoji hero card, giant clickable tile with 3D offset shadow */
+    .duo-emoji-card {
+        background: var(--background);
+        border: 2px solid var(--border);
+        border-radius: 28px;
+        box-shadow: 0 4px 0 0 var(--border);
+        transition: transform 0.08s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    }
+
+    .duo-emoji-card:hover {
+        border-color: color-mix(in srgb, var(--primary) 60%, var(--border));
+        box-shadow: 0 4px 0 0 color-mix(in srgb, var(--primary) 60%, var(--border));
+    }
+
+    .duo-emoji-card:active {
+        transform: translateY(3px);
+        box-shadow: 0 1px 0 0 var(--border);
+    }
+
+    /* Thick friendly inputs */
+    .duo-input {
+        background: var(--background) !important;
+        border: 2px solid var(--border) !important;
+        border-radius: 16px !important;
+        box-shadow: none !important;
+        font-weight: 500;
+        color: var(--foreground);
+        transition: border-color 0.18s ease, background 0.18s ease;
+    }
+
+    .duo-input::placeholder {
+        color: color-mix(in srgb, var(--muted-foreground) 70%, transparent);
+        font-weight: 500;
+    }
+
+    .duo-input:hover {
+        border-color: color-mix(in srgb, var(--foreground) 25%, var(--border)) !important;
+    }
+
+    .duo-input:focus,
+    .duo-input:focus-within,
+    .duo-input:focus-visible {
+        border-color: var(--primary) !important;
+        outline: none !important;
+        box-shadow: none !important;
+    }
+
+    /* Pill-shaped file chip with thick border */
+    .duo-chip {
+        background: var(--background);
+        border: 2px solid var(--border);
+        border-radius: 999px;
+        font-weight: 600;
+        transition: border-color 0.15s ease, transform 0.1s ease;
+    }
+
+    .duo-chip:hover {
+        border-color: color-mix(in srgb, var(--foreground) 30%, var(--border));
+    }
+
+    .duo-chip--new {
+        border-color: color-mix(in srgb, var(--primary) 55%, var(--border)) !important;
+        background: color-mix(in srgb, var(--primary) 4%, var(--background));
+    }
+
+    /* Upload drop zone */
+    .duo-upload {
+        background: var(--background);
+        border: 2px dashed var(--border);
+        border-radius: 16px;
+        font-weight: 700;
+        letter-spacing: 0.01em;
+        color: var(--muted-foreground);
+        transition: all 0.15s ease;
+    }
+
+    .duo-upload:hover {
+        border-color: var(--primary);
+        color: var(--primary);
+        background: color-mix(in srgb, var(--primary) 4%, var(--background));
+    }
+
+    /* ── The signature Duolingo "3D" button ── */
+    .duo-btn-primary {
+        background: var(--primary) !important;
+        color: var(--primary-foreground) !important;
+        border: none !important;
+        border-radius: 16px !important;
+        box-shadow: 0 4px 0 0 color-mix(in srgb, black 22%, var(--primary)) !important;
+        font-weight: 800 !important;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        font-size: 13px !important;
+        transition: transform 0.08s ease, box-shadow 0.08s ease, filter 0.2s ease !important;
+    }
+
+    .duo-btn-primary:hover:not(:disabled) {
+        filter: brightness(1.06);
+    }
+
+    .duo-btn-primary:active:not(:disabled) {
+        transform: translateY(4px);
+        box-shadow: 0 0 0 0 color-mix(in srgb, black 22%, var(--primary)) !important;
+    }
+
+    .duo-btn-primary:disabled {
+        background: var(--muted) !important;
+        color: color-mix(in srgb, var(--muted-foreground) 80%, transparent) !important;
+        box-shadow: 0 4px 0 0 var(--border) !important;
+        cursor: not-allowed;
+    }
+
+    .duo-btn-secondary {
+        background: var(--background) !important;
+        color: var(--foreground) !important;
+        border: 2px solid var(--border) !important;
+        border-radius: 16px !important;
+        box-shadow: 0 4px 0 0 var(--border) !important;
+        font-weight: 800 !important;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        font-size: 13px !important;
+        transition: transform 0.08s ease, box-shadow 0.08s ease, background 0.2s ease !important;
+    }
+
+    .duo-btn-secondary:hover:not(:disabled) {
+        background: var(--muted) !important;
+    }
+
+    .duo-btn-secondary:active:not(:disabled) {
+        transform: translateY(4px);
+        box-shadow: 0 0 0 0 var(--border) !important;
+    }
+
+    .duo-step-label {
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--muted-foreground);
+    }
+
+    /* Emoji picker trigger, duo variant */
+    .duo-emoji-trigger {
+        background: var(--background);
+        border: 2px solid var(--border);
+        border-radius: 24px;
+        box-shadow: 0 4px 0 0 var(--border);
+        transition: transform 0.08s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    }
+
+    .duo-emoji-trigger:hover {
+        border-color: color-mix(in srgb, var(--primary) 70%, var(--border));
+        box-shadow: 0 4px 0 0 color-mix(in srgb, var(--primary) 70%, var(--border));
+    }
+
+    .duo-emoji-trigger:active {
+        transform: translateY(3px);
+        box-shadow: 0 1px 0 0 var(--border);
+    }
+
+    /* Web Search Progress */
+    .search-globe-glow {
+        background: radial-gradient(circle, color-mix(in srgb, var(--primary) 20%, transparent), transparent 70%);
+        animation: search-glow-pulse 2s ease-in-out infinite;
+    }
+
+    .search-dot-pulse {
+        animation: search-dot-fade 1.5s ease-in-out infinite;
+    }
+
+    /* ───── Sign-In Dialog ───── */
+    .signin-dialog {
+        background: linear-gradient(
+            165deg,
+            color-mix(in srgb, var(--primary) 4%, var(--background)),
+            var(--background) 35%,
+            color-mix(in srgb, #4285f4 2%, var(--background)) 70%,
+            color-mix(in srgb, var(--primary) 3%, var(--background))
+        ) !important;
+        box-shadow:
+            0 0 0 1px color-mix(in srgb, var(--primary) 10%, var(--border)),
+            0 25px 80px rgba(0, 0, 0, 0.2),
+            0 10px 30px rgba(0, 0, 0, 0.12),
+            inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
+        border: none !important;
+    }
+}
+
+@keyframes search-glow-pulse {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.3); }
+}
+
+@keyframes search-dot-fade {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+}
+
+/* ───── Image Studio ───── */
+
+.studio-masonry-grid {
+    columns: 4 260px;
+    column-gap: 1rem;
+}
+
+@media (max-width: 1280px) {
+    .studio-masonry-grid { columns: 3 260px; }
+}
+
+@media (max-width: 768px) {
+    .studio-masonry-grid { columns: 2 200px; }
+}
+
+@media (max-width: 480px) {
+    .studio-masonry-grid { columns: 1; }
+}
+
+.studio-masonry-item {
+    break-inside: avoid;
+    margin-bottom: 1rem;
+}
+
+.studio-shimmer {
+    background: linear-gradient(
+        110deg,
+        var(--muted) 0%,
+        color-mix(in srgb, var(--studio-accent) 8%, var(--muted)) 40%,
+        var(--muted) 60%,
+        color-mix(in srgb, var(--studio-accent) 6%, var(--muted)) 80%,
+        var(--muted) 100%
+    );
+    background-size: 300% 100%;
+    animation: studio-shimmer 2.4s ease-in-out infinite;
+}
+
+@keyframes studio-shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+@keyframes agent-badge-shimmer {
+    0% { transform: translateX(-100%); }
+    50%, 100% { transform: translateX(100%); }
+}
+
+@keyframes agent-icon-float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-3px) rotate(2deg); }
+}
+
+@keyframes agent-chip-in {
+    0% { opacity: 0; transform: scale(0.6) translateY(4px); filter: blur(4px); }
+    100% { opacity: 1; transform: scale(1) translateY(0px); filter: blur(0px); }
+}
+
+@keyframes agent-glow-breathe {
+    0%, 100% { opacity: 0.5; transform: translateX(-50%) scale(1); }
+    50% { opacity: 0.8; transform: translateX(-50%) scale(1.1); }
+}
+
+/*
+ * Skip layout/paint for offscreen messages.
+ *
+ * `content-visibility: auto` tells the browser: "this subtree is isolated
+ * and you may skip its rendering work when it's not near the viewport."
+ * `contain-intrinsic-size` is the placeholder box size used while the
+ * subtree is skipped, it has to be a reasonable guess so the scrollbar
+ * doesn't jump when rows enter/leave the viewport.
+ *
+ * On a long thread this turns a cold remount of 200 messages into a mount
+ * of the ~10 messages actually on screen, the rest is skipped until the
+ * user scrolls near them. This is the single biggest win for first-visit
+ * thread performance (keep-alive handles the revisit case).
+ */
+.chat-message-row {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 400px;
+}
+
+/*
+ * Message list container.
+ *
+ * No mount animation, we want thread switches to snap in instantly.
+ * The `--hidden` variant is used to hide the list while the first
+ * messages query is loading, so the user doesn't see a flash of an
+ * empty container before the rows paint.
+ */
+.chat-message-list--hidden {
+    opacity: 0;
+}
+
