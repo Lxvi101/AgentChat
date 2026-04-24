@@ -4,15 +4,15 @@ One of the world's fastest open-source AI chat apps. Talk to your favorite open-
 
 ## Why another AI chat wrapper?
 
-Lately, I've been finding myself using more of the open-weight Chinese models. And while there are open-source chat hubs out there, none of them feel as fast as a really polished app like [T3 Chat](https://t3.chat) or ChatGPT. Most open-source options right now lack stream resumability and just the hardened architecture to match my workflow -- so I built AgentChat.
+Lately, with the release of Kimi K2.6 and DeepSeek v4, I've been finding myself using more of the open-weight Chinese models. And while there are open-source chat hubs out there, none of them feel as fast as a really polished app like [T3 Chat](https://t3.chat). Most open-source options right now lack stream resumability and just the hardened architecture to match my workflow. So I built AgentChat.
 
-> **Note:** This app is heavily inspired by [T3 Chat](https://t3.chat) and its architecture. This is an attempt to get [Theo Browne](https://twitter.com/t3dotgg) to open-source T3 Chat for the better of humanity. AgentChat is not a fully fledged chat solution. While it might be one of the fastest and most stable open-source chat engines out there, it doesn't replace something like T3 Chat, which is way more polished and will launch a mobile app soon.
+> **Note:** AgentChat is a very rough prototype and not yet a fully fledged chat solution. Consider it pre-alpha.
 
 ## Features
 
 - **Multi-provider AI**, OpenAI, Anthropic, Google, xAI, DeepSeek, Meta Llama, Fireworks, DeepInfra, and OpenRouter, all from one unified interface.
 - **Zero-jank streaming**, Custom `requestAnimationFrame` architecture. Tokens paint directly to the DOM without triggering React re-renders.
-- **Image Studio**, Generate images with Fal.ai models (Flux, Seedream, GPT Image). Reference image support for style-guided generation.
+- **Image Studio**, Generate images with Fal.ai models (Flux, Seedream, GPT Image 2). Reference image support for style-guided generation.
 - **Web Search**, Agentic multi-source web search powered by Firecrawl with real-time progress visualization.
 - **Voice Input**, Push-to-talk transcription via Fireworks Whisper.
 - **Real-time sync**, Convex provides instant, WebSocket-based data synchronization across tabs and devices.
@@ -98,7 +98,7 @@ You only need API keys for the providers you want to enable. Models without a co
 
 #### Recommended keys
 
-For the fastest "just works" setup, we recommend configuring these four providers, they cover every capability tier (flagship reasoning, fast/cheap, vision, long context) with first-party routing:
+For the fastest "just works" setup, I recommend configuring these four providers, they cover every capability tier (flagship reasoning, fast/cheap, vision, long context) with first-party routing:
 
 | Key | Why you want it | Get it from |
 |---|---|---|
