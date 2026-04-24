@@ -79,7 +79,7 @@ export const Hero: React.FC<HeroProps> = ({ onLaunch }) => {
             </svg>
           </button>
           <a
-            href="https://github.com"
+            href="https://github.com/Lxvi101/AgentChat"
             target="_blank"
             rel="noreferrer"
             className="site-cta site-cta--ghost"

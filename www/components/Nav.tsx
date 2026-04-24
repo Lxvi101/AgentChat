@@ -32,7 +32,7 @@ export const Nav: React.FC<NavProps> = ({ onLaunch, hashBase = "" }) => {
       </div>
       <div className="site-nav__actions">
         <a
-          href="https://github.com/agentchat/agentchat"
+          href="https://github.com/Lxvi101/AgentChat"
           target="_blank"
           rel="noopener noreferrer"
           className="site-nav__ghost"

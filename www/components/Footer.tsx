@@ -40,10 +40,10 @@ export const Footer: React.FC<FooterProps> = ({ siteHashBase }) => (
           title="Open source"
           siteHashBase={siteHashBase}
           links={[
-            ["GitHub", "https://github.com"],
-            ["Self-host guide", "https://github.com"],
-            ["Architecture", "https://github.com"],
-            ["Changelog", "https://github.com"],
+            ["GitHub", "https://github.com/Lxvi101/AgentChat"],
+            ["Self-host guide", "https://github.com/Lxvi101/AgentChat"],
+            ["Architecture", "https://github.com/Lxvi101/AgentChat"],
+            ["Changelog", "https://github.com/Lxvi101/AgentChat"],
           ]}
         />
         <FooterCol

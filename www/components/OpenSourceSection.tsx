@@ -23,7 +23,7 @@ export const OpenSourceSection: React.FC = () => (
       </p>
       <div className="site-oss__cta-row">
         <a
-          href="https://github.com"
+          href="https://github.com/Lxvi101/AgentChat"
           target="_blank"
           rel="noreferrer"
           className="site-cta site-cta--primary"
@@ -31,7 +31,7 @@ export const OpenSourceSection: React.FC = () => (
           Star on GitHub
         </a>
         <a
-          href="https://github.com"
+          href="https://github.com/Lxvi101/AgentChat"
           target="_blank"
           rel="noreferrer"
           className="site-cta site-cta--ghost"
@@ -53,7 +53,7 @@ export const OpenSourceSection: React.FC = () => (
           <code>
             <span className="site-terminal__prompt">$</span>{" "}
             <span className="site-terminal__cmd">git clone</span>{" "}
-            github.com/agentchat/agentchat{"\n"}
+            github.com/Lxvi101/AgentChat{"\n"}
             <span className="site-terminal__prompt">$</span>{" "}
             <span className="site-terminal__cmd">pnpm install</span>{"\n"}
             <span className="site-terminal__prompt">$</span>{" "}
